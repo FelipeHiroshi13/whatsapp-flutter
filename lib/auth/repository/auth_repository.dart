@@ -1,8 +1,7 @@
-import 'dart:js';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_ui/auth/screens/otp_screen.dart';
 import 'package:whatsapp_ui/core/utils/utils.dart';
 
@@ -36,3 +35,10 @@ class AuthRepository {
     }
   }
 }
+
+final authRepositoryProvider = Provider(
+  (ref) => AuthRepository(
+    auth: FirebaseAuth.instance,
+    firestore: FirebaseFirestore.instance,
+  ),
+);

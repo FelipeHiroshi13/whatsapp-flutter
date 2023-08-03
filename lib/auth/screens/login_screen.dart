@@ -1,18 +1,20 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whatsapp_ui/auth/controller/auth_controller.dart';
 import 'package:whatsapp_ui/colors.dart';
 import 'package:whatsapp_ui/core/commom_widgets/custom_button.dart';
 import 'package:whatsapp_ui/core/constants/app_sizes.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   static const routeName = '/login-screen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final phoneController = TextEditingController();
   Country? country;
 
@@ -22,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void pickCountry() {
+  void _pickCountry() {
     showCountryPicker(
       context: context,
       onSelect: (_country) {
@@ -31,6 +33,15 @@ class _LoginScreenState extends State<LoginScreen> {
         });
       },
     );
+  }
+
+  void _sendPhoneNumber() {
+    String phoneNumber = phoneController.text.trim();
+    if (country != null && phoneNumber.isNotEmpty) {
+      ref
+          .read(authControllerProvider)
+          .signInWithPhone(context, '+${country!.phoneCode}$phoneNumber');
+    }
   }
 
   @override
@@ -50,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const Text('WhatsApp need to verify your phone number'),
             gapH12,
             TextButton(
-              onPressed: pickCountry,
+              onPressed: _pickCountry,
               child: const Text('Pick Country'),
             ),
             gapH4,
