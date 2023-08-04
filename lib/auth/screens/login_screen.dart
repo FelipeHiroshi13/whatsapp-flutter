@@ -5,6 +5,7 @@ import 'package:whatsapp_ui/auth/controller/auth_controller.dart';
 import 'package:whatsapp_ui/colors.dart';
 import 'package:whatsapp_ui/core/commom_widgets/custom_button.dart';
 import 'package:whatsapp_ui/core/constants/app_sizes.dart';
+import 'package:whatsapp_ui/core/utils/utils.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   static const routeName = '/login-screen';
@@ -41,6 +42,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       ref
           .read(authControllerProvider)
           .signInWithPhone(context, '+${country!.phoneCode}$phoneNumber');
+    } else {
+      showSnackBar(content: 'Fill out all the fields');
     }
   }
 
@@ -83,7 +86,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: Sizes.p16),
-              child: CustomButton(text: 'NEXT', onPressed: () {}),
+              child: CustomButton(
+                text: 'NEXT',
+                onPressed: _sendPhoneNumber,
+              ),
             ),
             gapH20,
           ],
