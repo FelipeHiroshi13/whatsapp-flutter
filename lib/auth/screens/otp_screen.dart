@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/core/constants/app_sizes.dart';
 
-import '../../colors.dart';
+import '../../core/utils/colors.dart';
 
 class OTPScreen extends StatefulWidget {
   static const String routeName = '/otp-screen';

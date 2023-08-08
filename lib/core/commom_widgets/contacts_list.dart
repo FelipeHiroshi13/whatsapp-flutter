@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/auth/screens/login_screen.dart';
-import 'package:whatsapp_ui/colors.dart';
+import 'package:whatsapp_ui/core/utils/colors.dart';
 import 'package:whatsapp_ui/info.dart';
 import 'package:whatsapp_ui/screens/mobile_chat_screen.dart';
 

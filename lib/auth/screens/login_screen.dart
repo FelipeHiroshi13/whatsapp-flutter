@@ -2,7 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_ui/auth/controller/auth_controller.dart';
-import 'package:whatsapp_ui/colors.dart';
+import 'package:whatsapp_ui/core/utils/colors.dart';
 import 'package:whatsapp_ui/core/commom_widgets/custom_button.dart';
 import 'package:whatsapp_ui/core/constants/app_sizes.dart';
 import 'package:whatsapp_ui/core/utils/utils.dart';
